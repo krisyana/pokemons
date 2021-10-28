@@ -78,8 +78,9 @@ export default {
           if (Math.random() * 100 + 1 <= capture_rate) {
             console.log('You catch it');
             this.ADD_MY_POKEMON(response.data);
+            this.$toast.success(`Success catch ${response.data.name}`);
           } else {
-            console.log('you fail to catch it');
+            this.$toast.error(`Failed to catch ${response.data.name}`);
           }
         });
     },

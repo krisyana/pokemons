@@ -5,7 +5,6 @@
     </div>
     <div class="row" v-else>
       <h1 class="text-center my-auto">Catched Pokemon</h1>
-
       <div
         v-for="(pokemon, i) in myPokemon"
         :key="pokemon.name + i"
@@ -13,9 +12,12 @@
         style="width: 18rem"
       >
         <div class="card-body">
-          <h5 class="card-title py-3">
+          <h5 class="card-title py-2">
             {{ pokemon.name.toUpperCase() }}
           </h5>
+          <h6 class="card-subtitle mb-2 text-muted py-1">
+            {{ pokemon.capture_rate }} % rate to capture
+          </h6>
           <p class="card-text">
             <button
               @click="release(pokemon.id)"
@@ -26,7 +28,7 @@
           </p>
           <router-link
             class="btn btn-primary rounded-pill"
-            :to="{ name: 'Detail', params: { id: i + 1 } }"
+            :to="{ name: 'Detail', params: { id: pokemon.id } }"
           >
             See Detail
           </router-link>
@@ -46,6 +48,7 @@ export default {
     ...mapMutations(['RELEASE_MY_POKEMON']),
     release(id) {
       this.RELEASE_MY_POKEMON(id);
+      this.$toast('Pokemon released!');
     },
   },
 };
