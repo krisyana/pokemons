@@ -15,7 +15,9 @@
         style="width: 18rem"
       >
         <div class="card-body">
-          <h5 class="card-title">{{ pokemon.name.toUpperCase() }}</h5>
+          <h5 class="card-title">
+            {{ pokemon.name.toUpperCase() }} #{{ i + 1 }}
+          </h5>
           <p class="card-text">
             <button
               @click="catchPoke(i + 1)"
@@ -68,6 +70,9 @@ export default {
           this.pokemons = this.pokemons.concat(append);
           this.offset += 20;
           this.busy = false;
+        })
+        .catch((err) => {
+          this.$toast.error(`Error fetching pokemons : ${err}`);
         });
     },
     catchPoke(id) {
@@ -76,7 +81,6 @@ export default {
         .then((response) => {
           const { capture_rate } = response.data;
           if (Math.random() * 100 + 1 <= capture_rate) {
-            console.log('You catch it');
             this.ADD_MY_POKEMON(response.data);
             this.$toast.success(`Success catch ${response.data.name}`);
           } else {

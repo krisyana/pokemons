@@ -9,6 +9,7 @@ import 'vue-toastification/dist/index.css';
 
 Vue.config.productionTip = false;
 Vue.use(infiniteScroll);
+
 Vue.use(Toast, {
     transition: 'Vue-Toastification__bounce',
     maxToasts: 5,
