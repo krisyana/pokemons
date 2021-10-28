@@ -1,30 +1,41 @@
+/* eslint-disable */
 <template>
   <div class="container">
     <div
       v-infinite-scroll="loadMore"
       infinite-scroll-disabled="busy"
       infinite-scroll-distance="limit"
+      class="row"
     >
+      <h1>List Pokemon</h1>
       <div
         v-for="(pokemon, i) in pokemons"
         :key="pokemon.name + i"
-        class="card my-3 mx-auto"
+        class="card col-sm-4 my-3 mx-auto border-success rounded-circle"
         style="width: 18rem"
       >
         <div class="card-body">
-          <h5 class="card-title">{{ pokemon.name }}</h5>
+          <h5 class="card-title">{{ pokemon.name.toUpperCase() }}</h5>
           <p class="card-text">
-            <button @click="catchPoke(i + 1)" class="btn btn-info">
-              Add to My Pokemon
+            <button
+              @click="catchPoke(i + 1)"
+              class="btn btn-success rounded-pill"
+            >
+              Add to My Pokemon +
             </button>
           </p>
           <router-link
-            class="btn btn-primary"
+            class="btn btn-primary rounded-pill"
             :to="{ name: 'Detail', params: { id: i + 1 } }"
           >
             See Detail
           </router-link>
         </div>
+      </div>
+    </div>
+    <div v-if="busy" class="d-flex mt-3 justify-content-center">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
     </div>
   </div>
