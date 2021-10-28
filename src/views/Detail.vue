@@ -54,33 +54,33 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
-import { mapMutations } from 'vuex';
-import { ParticlesBg } from 'particles-bg-vue';
+import axios from "axios";
+import { mapMutations } from "vuex";
+import { ParticlesBg } from "particles-bg-vue";
 
 export default {
-  name: 'Detail',
+  name: "Detail",
   components: {
     ParticlesBg,
   },
   data() {
     return {
       pokemon: {
-        name: 'Loading...',
+        name: "Loading...",
         color: {
-          name: 'black',
+          name: "black",
         },
         capture_rate: 0,
         base_happiness: 0,
         generation: {
           name: 0,
         },
-        flavor_text_entries: [{ flavor_text: 'new' }],
+        flavor_text_entries: [{ flavor_text: "new" }],
         growth_rate: {
-          name: 'normal',
+          name: "normal",
         },
         habitat: {
-          name: 'plain',
+          name: "plain",
         },
       },
       loading: false,
@@ -105,7 +105,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['ADD_MY_POKEMON']),
+    ...mapMutations(["ADD_MY_POKEMON"]),
     getDetail() {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon-species/${this.id}/ `)
@@ -113,7 +113,7 @@ export default {
           this.pokemon = response.data;
         })
         .catch((err) => {
-          this.$router.push('/');
+          this.$router.push("/");
           this.$toast.error(`Error fetching pokemon : ${err}`);
         });
     },

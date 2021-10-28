@@ -38,17 +38,17 @@
   </div>
 </template>
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations } from "vuex";
 export default {
-  name: 'MyPokemon',
+  name: "MyPokemon",
   computed: {
-    ...mapState(['myPokemon']),
+    ...mapState(["myPokemon"]),
   },
   methods: {
-    ...mapMutations(['RELEASE_MY_POKEMON']),
+    ...mapMutations(["RELEASE_MY_POKEMON"]),
     release(id) {
       this.RELEASE_MY_POKEMON(id);
-      this.$toast('Pokemon released!');
+      this.$toast("Pokemon released!");
     },
   },
 };

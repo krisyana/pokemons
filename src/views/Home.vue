@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { mapMutations } from 'vuex';
+import axios from "axios";
+import { mapMutations } from "vuex";
 
 export default {
-  name: 'Home',
+  name: "Home",
   data() {
     return {
       pokemons: [],
@@ -58,7 +58,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(['ADD_MY_POKEMON']),
+    ...mapMutations(["ADD_MY_POKEMON"]),
     loadMore() {
       this.busy = true;
       axios
